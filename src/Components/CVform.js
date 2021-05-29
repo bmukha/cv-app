@@ -1,10 +1,13 @@
 import React from "react";
 import "../Styles/CVform.css";
 
-function CVform() {
+function CVform(props) {
+  console.log(props)
   return (
     <form className="cv-form">
-      <h1>form</h1>
+      <label>
+        Name: <input type="text" value={props.nameF}/>
+      </label>
     </form>
   );
 }
