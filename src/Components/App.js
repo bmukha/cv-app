@@ -7,17 +7,24 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      nameF: "nobody",
+      firstName: "",
     };
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
   }
 
   render() {
-    console.log(this.state)
     return (
       <div className="App">
         <Header />
-        <CVresult nameF={this.state.nameF}/>
-        <CVform nameF={this.state.nameF}/>
+        <CVresult firstName={this.state.firstName} />
+        <CVform firstName={this.state.firstName} handleChange={this.handleChange}/>
       </div>
     );
   }
