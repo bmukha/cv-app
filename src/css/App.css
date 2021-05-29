@@ -1,0 +1,8 @@
+.App {
+  max-height: 100vh;
+  min-height: 100vh;
+  text-align: center;
+  display: grid;
+  grid-template-rows: 1fr 9fr;
+}
+
