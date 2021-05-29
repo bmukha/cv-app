@@ -4,5 +4,19 @@
   text-align: center;
   display: grid;
   grid-template-rows: 1fr 9fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "header header"
+    "form result";
 }
 
+@media (max-width: 750px) {
+  .App {
+    grid-template-rows: 1fr 5fr 5fr;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "form"
+      "result";
+  }
+}
