@@ -1,4 +1,4 @@
-import uniqid from "uniqid"
+// import uniqid from "uniqid"
 
 const Input = (props) => {
   // console.log("props received by Input", props);
@@ -6,7 +6,7 @@ const Input = (props) => {
     <label>
       {props.labelName}:
       <input
-        key={uniqid()}
+        // key={uniqid()}
         type={props.type}
         name={props.name}
         value={props.firstName}
