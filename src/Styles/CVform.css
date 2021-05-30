@@ -8,3 +8,12 @@
   font-size: 2em;
   color: white;
 }
+
+fieldset {
+  border: 2px solid #000;
+  padding: 2rem;
+}
+
+legend {
+  padding: 0 1rem;
+}

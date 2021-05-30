@@ -11,6 +11,7 @@ class App extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
@@ -19,12 +20,31 @@ class App extends Component {
     });
   }
 
+  handleSubmit(event) {
+    event.preventDefault();
+    console.log("Submitted");
+  }
+
   render() {
+    const fieldsets = [
+      {
+        fieldsetName: "GenIf2021",
+        inputs: [
+          {
+            type: "text",
+            name: "firstName",
+            value: this.state.firstName,
+            onChange: this.handleChange,
+          },
+        ],
+      },
+    ];
+
     return (
       <div className="App">
         <Header />
-        <CVresult firstName={this.state.firstName} />
-        <CVform firstName={this.state.firstName} handleChange={this.handleChange}/>
+        <CVresult />
+        <CVform fieldsets={fieldsets} />
       </div>
     );
   }
