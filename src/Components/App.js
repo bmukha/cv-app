@@ -8,9 +8,17 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      valuesSubmitted: false,
       firstName: "",
       lastName: "",
-      email: ""
+      email: "",
+      schoolName: "",
+      titleOfStudy: "",
+      dateOfStudyFrom: "",
+      dateOfStudyTo: "",
+      companyName: "",
+      positionName: "",
+      mainTasks: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -18,24 +26,29 @@ class App extends Component {
   }
 
   handleChange(event) {
+    event.preventDefault();
+    console.log(event.target.value)
     this.setState({
+      valuesSubmitted: false,
       [event.target.name]: event.target.value,
     });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log("Submitted");
+    this.setState({
+      valuesSubmitted: true
+    })
   }
 
   render() {
     const fieldsets = [
       {
-        id: uniqid(),
+        key: uniqid(),
         fieldsetName: "General information",
         inputs: [
           {
-            id: uniqid(),
+            key: uniqid(),
             labelName: "First name",
             type: "text",
             name: "firstName",
@@ -43,7 +56,7 @@ class App extends Component {
             onChange: this.handleChange,
           },
           {
-            id: uniqid(),
+            key: uniqid(),
             labelName: "Last name",
             type: "text",
             name: "lastName",
@@ -51,10 +64,78 @@ class App extends Component {
             onChange: this.handleChange,
           },
           {
-            id: uniqid(),
+            key: uniqid(),
             labelName: "E-mail",
             type: "email",
             name: "email",
+            value: this.state.lastName,
+            onChange: this.handleChange,
+          },
+        ],
+      },
+      {
+        key: uniqid(),
+        fieldsetName: "Educational expirience",
+        inputs: [
+          {
+            key: uniqid(),
+            labelName: "School name",
+            type: "text",
+            name: "schoolName",
+            value: this.state.schoolName,
+            onChange: this.handleChange,
+          },
+          {
+            key: uniqid(),
+            labelName: "Title of study",
+            type: "text",
+            name: "titleOfStudy",
+            value: this.state.titleOfStudy,
+            onChange: this.handleChange,
+          },
+          {
+            key: uniqid(),
+            labelName: "Date of study (from)",
+            type: "date",
+            name: "dateOfStudyFrom",
+            value: this.state.dateOfStudyFrom,
+            onChange: this.handleChange,
+          },
+          {
+            key: uniqid(),
+            labelName: "Date of study (to)",
+            type: "date",
+            name: "dateOfStudyTo",
+            value: this.state.dateOfStudyTo,
+            onChange: this.handleChange,
+          },
+        ],
+      },
+      {
+        key: uniqid(),
+        fieldsetName: "Practical expirience",
+        inputs: [
+          {
+            key: uniqid(),
+            labelName: "Company Name",
+            type: "text",
+            name: "companyName",
+            value: this.state.companyName,
+            onChange: this.handleChange,
+          },
+          {
+            key: uniqid(),
+            labelName: "Position",
+            type: "text",
+            name: "positionName",
+            value: this.state.position,
+            onChange: this.handleChange,
+          },
+          {
+            key: uniqid(),
+            labelName: "Main tasks",
+            type: "text",
+            name: "mainTasks",
             value: this.state.lastName,
             onChange: this.handleChange,
           },
@@ -65,8 +146,8 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <CVresult />
         <CVform fieldsets={fieldsets} />
+        <CVresult data={this.state} />
       </div>
     );
   }

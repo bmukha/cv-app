@@ -6,8 +6,8 @@
   min-height: 100vh;
   text-align: center;
   display: grid;
-  grid-template-rows: 1fr 9fr;
-  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 50px 1fr;
+  grid-template-columns: 1fr 2fr;
   grid-template-areas:
     "header header"
     "form result";
@@ -29,7 +29,7 @@
 }
 
 input {
-  margin: 1rem;
+  margin: 0.5em;
 }
 
 label {

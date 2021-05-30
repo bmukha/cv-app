@@ -1,10 +1,12 @@
+import uniqid from "uniqid"
+
 const Input = (props) => {
-  console.log("props received by Input", props);
+  // console.log("props received by Input", props);
   return (
     <label>
       {props.labelName}:
       <input
-        id={props.id}
+        key={uniqid()}
         type={props.type}
         name={props.name}
         value={props.firstName}
