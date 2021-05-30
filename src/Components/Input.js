@@ -1,17 +1,17 @@
 const Input = (props) => {
-  console.log("props received by Input", props)
+  console.log("props received by Input", props);
   return (
-    <p>This is input</p>
-    // <label>
-    //   {props.labelName}:
-    //   <input
-    //     type="text"
-    //     name="firstName"
-    //     value={props.firstName}
-    //     onChange={props.handleChange}
-    //   />
-    // </label>
+    <label>
+      {props.labelName}:
+      <input
+        id={props.id}
+        type={props.type}
+        name={props.name}
+        value={props.firstName}
+        onChange={props.onChange}
+      />
+    </label>
   );
 };
 
-export default Input
+export default Input;

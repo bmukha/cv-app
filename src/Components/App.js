@@ -3,11 +3,14 @@ import "../Styles/App.css";
 import CVresult from "./CVresult";
 import CVform from "./CVform";
 import Header from "./Header";
+import uniqid from "uniqid"
 class App extends Component {
   constructor() {
     super();
     this.state = {
       firstName: "",
+      lastName: "",
+      email: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -28,12 +31,31 @@ class App extends Component {
   render() {
     const fieldsets = [
       {
-        fieldsetName: "GenIf2021",
+        id: uniqid(),
+        fieldsetName: "General information",
         inputs: [
           {
+            id: uniqid(),
+            labelName: "First name",
             type: "text",
             name: "firstName",
             value: this.state.firstName,
+            onChange: this.handleChange,
+          },
+          {
+            id: uniqid(),
+            labelName: "Last name",
+            type: "text",
+            name: "lastName",
+            value: this.state.lastName,
+            onChange: this.handleChange,
+          },
+          {
+            id: uniqid(),
+            labelName: "E-mail",
+            type: "email",
+            name: "email",
+            value: this.state.lastName,
             onChange: this.handleChange,
           },
         ],
