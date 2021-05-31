@@ -13,6 +13,15 @@ const CVresult = (props) => {
           Hello, my name is {props.data.firstName} {props.data.lastName}. I am
           aspiring web developer.
         </p>
+        <p>
+          I've studied {props.data.titleOfStudy} in {props.data.shoolName} from{" "}
+          {props.data.dateOfStudyFrom} to {props.data.dateOfStudyTo}
+        </p>
+        <p>
+          My professional expirience includes working in{" "}
+          {props.data.companyName} on {props.data.positionName} role. My main
+          task were {props.data.mainTasks}.
+        </p>
       </div>
     );
   }
