@@ -24,6 +24,7 @@ class App extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
   }
 
   componentDidMount() {
@@ -133,10 +134,8 @@ class App extends Component {
 
   handleChange(event) {
     event.preventDefault();
-    console.log(event.target.value);
     this.setState({
       [event.target.name]: event.target.value,
-      valuesSubmitted: false,
     });
   }
 
@@ -145,16 +144,30 @@ class App extends Component {
       valuesSubmitted: true,
     });
     event.preventDefault();
-    setTimeout(() => {
-      console.log("State after submit pushed", this.state);
-    }, 2000);
+
+    localStorage.setItem("oldState", JSON.stringify(this.state));
+  }
+
+  handleEdit(event) {
+    event.preventDefault();
+    if (!this.state.valuesSubmitted) return;
+
+    const restoredState = JSON.parse(window.localStorage.getItem("oldState"));
+
+    if (restoredState) {
+      this.setState(restoredState);
+    }
   }
 
   render() {
     return (
       <div className="App">
         <Header />
-        <CVform onSubmit={this.handleSubmit} fieldsets={this.state.fieldsets} />
+        <CVform
+          onSubmit={this.handleSubmit}
+          onEdit={this.handleEdit}
+          fieldsets={this.state.fieldsets}
+        />
         <CVresult data={this.state} />
       </div>
     );
