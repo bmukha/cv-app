@@ -136,25 +136,25 @@ class App extends Component {
     console.log(event.target.value);
     this.setState({
       [event.target.name]: event.target.value,
-      valuesSubmitted: false
+      valuesSubmitted: false,
     });
   }
 
   handleSubmit(event) {
-    console.log("State after submit pushed", this.state);
     this.setState({
       valuesSubmitted: true,
     });
     event.preventDefault();
+    setTimeout(() => {
+      console.log("State after submit pushed", this.state);
+    }, 2000);
   }
 
   render() {
     return (
       <div className="App">
         <Header />
-        <CVform
-          onSubmit={this.handleSubmit}
-          fieldsets={this.state.fieldsets} />
+        <CVform onSubmit={this.handleSubmit} fieldsets={this.state.fieldsets} />
         <CVresult data={this.state} />
       </div>
     );

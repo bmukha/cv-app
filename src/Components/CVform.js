@@ -3,8 +3,6 @@ import "../Styles/CVform.css";
 import Fieldset from "./Fieldset";
 
 const CVform = (props) => {
-  // console.log("props received by CVform", props);
-
   const fieldsetsToRender = props.fieldsets.map((item) => {
     return (
       <Fieldset

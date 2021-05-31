@@ -1,9 +1,7 @@
 import React from "react";
 import Input from "./Input";
-// import uniqid from "uniqid"
 
 const Fieldset = (props) => {
-  // console.log("props received by Fieldset", props);
   const inputsToRender = props.inputs.map((item) => {
     return (
       <Input
