@@ -1,177 +1,177 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import "../Styles/App.css";
 import CVresult from "./CVresult";
 import CVform from "./CVform";
 import Header from "./Header";
 import uniqid from "uniqid";
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      valuesSubmitted: false,
-      firstName: "",
-      lastName: "",
-      email: "",
-      schoolName: "",
-      titleOfStudy: "",
-      dateOfStudyFrom: "",
-      dateOfStudyTo: "",
-      companyName: "",
-      positionName: "",
-      mainTasks: "",
-      fieldsets: [],
-    };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleEdit = this.handleEdit.bind(this);
-  }
+const App = () => {
+  const [data, setData] = useState({
+    valuesSubmitted: false,
+    firstName: "",
+    lastName: "",
+    email: "",
+    schoolName: "",
+    titleOfStudy: "",
+    dateOfStudyFrom: "",
+    dateOfStudyTo: "",
+    companyName: "",
+    positionName: "",
+    mainTasks: "",
+    fieldsets: [],
+  });
 
-  componentDidMount() {
-    this.setState({
-      fieldsets: [
-        {
-          key: uniqid(),
-          fieldsetName: "General information",
-          inputs: [
-            {
-              key: uniqid(),
-              labelName: "First name",
-              type: "text",
-              name: "firstName",
-              value: this.state.firstName,
-              onChange: this.handleChange,
-            },
-            {
-              key: uniqid(),
-              labelName: "Last name",
-              type: "text",
-              name: "lastName",
-              value: this.state.lastName,
-              onChange: this.handleChange,
-            },
-            {
-              key: uniqid(),
-              labelName: "E-mail",
-              type: "email",
-              name: "email",
-              value: this.state.lastName,
-              onChange: this.handleChange,
-            },
-          ],
-        },
-        {
-          key: uniqid(),
-          fieldsetName: "Educational expirience",
-          inputs: [
-            {
-              key: uniqid(),
-              labelName: "School name",
-              type: "text",
-              name: "schoolName",
-              value: this.state.schoolName,
-              onChange: this.handleChange,
-            },
-            {
-              key: uniqid(),
-              labelName: "Title of study",
-              type: "text",
-              name: "titleOfStudy",
-              value: this.state.titleOfStudy,
-              onChange: this.handleChange,
-            },
-            {
-              key: uniqid(),
-              labelName: "Date of study (from)",
-              type: "date",
-              name: "dateOfStudyFrom",
-              value: this.state.dateOfStudyFrom,
-              onChange: this.handleChange,
-            },
-            {
-              key: uniqid(),
-              labelName: "Date of study (to)",
-              type: "date",
-              name: "dateOfStudyTo",
-              value: this.state.dateOfStudyTo,
-              onChange: this.handleChange,
-            },
-          ],
-        },
-        {
-          key: uniqid(),
-          fieldsetName: "Practical expirience",
-          inputs: [
-            {
-              key: uniqid(),
-              labelName: "Company Name",
-              type: "text",
-              name: "companyName",
-              value: this.state.companyName,
-              onChange: this.handleChange,
-            },
-            {
-              key: uniqid(),
-              labelName: "Position",
-              type: "text",
-              name: "positionName",
-              value: this.state.position,
-              onChange: this.handleChange,
-            },
-            {
-              key: uniqid(),
-              labelName: "Main tasks",
-              type: "text",
-              name: "mainTasks",
-              value: this.state.lastName,
-              onChange: this.handleChange,
-            },
-          ],
-        },
-      ],
+  useEffect(() => {
+    setData((prevData) => {
+      return {
+        ...prevData,
+        fieldsets: [
+          {
+            key: uniqid(),
+            fieldsetName: "General information",
+            inputs: [
+              {
+                key: uniqid(),
+                labelName: "First name",
+                type: "text",
+                name: "firstName",
+                value: data.firstName,
+                onChange: handleChange,
+              },
+              {
+                key: uniqid(),
+                labelName: "Last name",
+                type: "text",
+                name: "lastName",
+                value: data.lastName,
+                onChange: handleChange,
+              },
+              {
+                key: uniqid(),
+                labelName: "E-mail",
+                type: "email",
+                name: "email",
+                value: data.lastName,
+                onChange: handleChange,
+              },
+            ],
+          },
+          {
+            key: uniqid(),
+            fieldsetName: "Educational expirience",
+            inputs: [
+              {
+                key: uniqid(),
+                labelName: "School name",
+                type: "text",
+                name: "schoolName",
+                value: data.schoolName,
+                onChange: handleChange,
+              },
+              {
+                key: uniqid(),
+                labelName: "Title of study",
+                type: "text",
+                name: "titleOfStudy",
+                value: data.titleOfStudy,
+                onChange: handleChange,
+              },
+              {
+                key: uniqid(),
+                labelName: "Date of study (from)",
+                type: "date",
+                name: "dateOfStudyFrom",
+                value: data.dateOfStudyFrom,
+                onChange: handleChange,
+              },
+              {
+                key: uniqid(),
+                labelName: "Date of study (to)",
+                type: "date",
+                name: "dateOfStudyTo",
+                value: data.dateOfStudyTo,
+                onChange: handleChange,
+              },
+            ],
+          },
+          {
+            key: uniqid(),
+            fieldsetName: "Practical expirience",
+            inputs: [
+              {
+                key: uniqid(),
+                labelName: "Company Name",
+                type: "text",
+                name: "companyName",
+                value: data.companyName,
+                onChange: handleChange,
+              },
+              {
+                key: uniqid(),
+                labelName: "Position",
+                type: "text",
+                name: "positionName",
+                value: data.position,
+                onChange: handleChange,
+              },
+              {
+                key: uniqid(),
+                labelName: "Main tasks",
+                type: "text",
+                name: "mainTasks",
+                value: data.lastName,
+                onChange: handleChange,
+              },
+            ],
+          },
+        ],
+      };
     });
-  }
+  }, []);
 
-  handleChange(event) {
+  const handleChange = (event) => {
     event.preventDefault();
-    this.setState({
-      [event.target.name]: event.target.value,
+    setData((prevData) => {
+      return {
+        ...prevData,
+        [event.target.name]: event.target.value,
+      };
     });
-  }
+  };
 
-  handleSubmit(event) {
-    this.setState({
-      valuesSubmitted: true,
+  const handleSubmit = (event) => {
+    setData((prevData) => {
+      return {
+        ...prevData,
+        valuesSubmitted: true,
+      };
     });
     event.preventDefault();
 
-    localStorage.setItem("oldState", JSON.stringify(this.state));
-  }
+    localStorage.setItem("oldData", JSON.stringify(data));
+  };
 
-  handleEdit(event) {
+  const handleEdit = (event) => {
     event.preventDefault();
-    if (!this.state.valuesSubmitted) return;
+    if (!data.valuesSubmitted) return;
 
-    const restoredState = JSON.parse(window.localStorage.getItem("oldState"));
+    const restoredData = JSON.parse(window.localStorage.getItem("oldData"));
 
-    if (restoredState) {
-      this.setState(restoredState);
+    if (restoredData) {
+      setData(restoredData);
     }
-  }
+  };
 
-  render() {
-    return (
-      <div className="App">
-        <Header />
-        <CVform
-          onSubmit={this.handleSubmit}
-          onEdit={this.handleEdit}
-          fieldsets={this.state.fieldsets}
-        />
-        <CVresult data={this.state} />
-      </div>
-    );
-  }
-}
-
+  return (
+    <div className="App">
+      <Header />
+      <CVform
+        onSubmit={handleSubmit}
+        onEdit={handleEdit}
+        fieldsets={data.fieldsets}
+      />
+      <CVresult data={data} />
+    </div>
+  );
+};
 export default App;
